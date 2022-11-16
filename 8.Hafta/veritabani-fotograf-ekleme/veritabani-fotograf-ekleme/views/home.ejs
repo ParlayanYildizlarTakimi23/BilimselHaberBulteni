@@ -1,0 +1,111 @@
+<form onsubmit="uploadImages()" enctype="multipart/form-data">
+    <div id="deneme">
+     
+        <!--<input type="text" id="txtBaslik" multiline rows="30">-->
+        <!--<input type="text" id="txtİcerik" >-->
+        <input type="file" id="files" multiple accept="image/*" name="images" required />
+
+        <input type="submit" id="upload" value="Upload images" />
+        
+        <!--<button id="uyari">Haber</button>-->
+    </div>
+    <style>
+        body{
+            font-family: "Helvetica", Sans-Serif;
+            background-color: black;
+        }
+        #deneme {
+            width: 420px;
+            height: 200px;
+            background-color: white;
+            
+            position: relative;
+            top: 80px;
+            margin: auto;
+        }
+        #txtBaslik{
+            position: relative;
+            width: 290px;
+            height: 100px;
+            margin: 65px;
+        }
+        #txtİcerik{
+            position: relative;
+            width: 290px;
+            height: 100px;
+            top:1px;
+            left:65px;
+            
+        }
+        #files{
+            position: relative;
+            width: 290px;
+            top: 65px;;
+            left: 65px;;
+        }
+        #upload{
+            position: relative;
+            width: 290px;
+            top: 65px;;
+            left: 65px;;
+        }
+        #uyari{
+            position: relative;
+            width: 290px;
+            top: 65px;;
+            left: 65px;;
+        }
+    </style>
+    
+</form>
+
+<%for (let a = 0; a < images.length; a++) { %>
+    <img src="<%= images[a] %>" style="width: 100%;" />
+<% } %>
+<script>
+    //buton ile div içinde yazdıralım.
+    
+    var btn=document.getElementById("uyari");
+    btn.onclick=function(){
+        
+        var baslik=document.getElementById("txtBaslik");
+        var icerik=document.getElementById("txtİcerik");
+        window.alert("Baslik: "+baslik.value+"\n"+icerik.value);
+        
+    }		
+</script>
+<script>
+    function uploadImages() {
+        // prevent the form from reloading the page
+        event.preventDefault()
+
+        // get form tag
+        const form = event.target
+
+        // create form data object from <form>
+        const formData = new FormData(form)
+
+        // create AJAX object
+        const ajax = new XMLHttpRequest()
+
+        // 1st parameter = method, GET/POST
+        // 2nd parameter = path to server file
+        // 3rd parameter = asynchronous
+        ajax.open("POST", "/uploadImages", true)
+
+        // when status of request changes
+        ajax.onreadystatechange = function () {
+            // operation is completed
+            if (this.readyState == 4) {
+                // response from server is okay
+                if (this.status == 200) {
+                    // response from server
+                    console.log(this.responseText)
+                }
+            }
+        }
+
+        // send AJAX request
+        ajax.send(formData)
+    }
+</script>
