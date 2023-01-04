@@ -1,0 +1,53 @@
+
+.haberler {
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+
+  .haberler .haberlerTitle {
+    font-family: cursive;
+    font-size: 60px;
+    color: rgb(90, 169, 130);
+  }
+  
+  .haberlerList {
+    width: 70vw;
+    height: auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    place-items: center;
+  }
+  
+  /* MENU ITEM STYLING */
+  
+  .haberlerItem {
+    border-radius: 15px;
+    width: 300px;
+    height: 350px;
+    margin: 20px;
+    box-shadow: 0px 3px 15px rgba(214, 151, 151, 0.2);
+  }
+  .haberlerItem:hover {
+    box-shadow: 0px 3px 15px rgba(138, 24, 24, 0.5);
+    transition: 0.3s ease-in;
+    cursor: pointer;
+  }
+  
+  .haberlerItem div {
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    width: 100%;
+    height: 200px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+  
+  .haberlerItem h1,
+  .haberlerItem p {
+    margin-left: 20px;
+  }
